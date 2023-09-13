@@ -1,0 +1,245 @@
+$light-color: #dff3f0;
+$dark-color: #64c5b3;
+$header-height: 26vh;
+$footer-height: 10vh;
+$grid-gap: 0.8rem;
+$body-height: calc(100vh - ($header-height + $footer-height) - $grid-gap * 2);
+
+.appointment-page {
+  // border-bottom: $grid-gap solid $light-color;
+  display: grid;
+  gap: $grid-gap;
+  grid-template-columns: 0.6fr 0.4fr 1fr;
+  grid-template-rows: $header-height $body-height $footer-height;
+  background-color: $light-color;
+  .appointment-page-header-left {
+    background-color: $dark-color;
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .appointment-page-header-right {
+    background-color: $dark-color;
+    grid-column: 2/4;
+    grid-row: 1/2;
+  }
+  .appointment-page-body-left {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    background-color: #fff;
+  }
+  .appointment-page-body-right {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    background-color: #fff;
+  }
+  .appointment-page-footer {
+    grid-column: 1/4;
+    grid-row: 3/4;
+    background-color: $dark-color;
+    position: relative;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: $dark-color;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #616161;
+    }
+  }
+  .appointment-page-title {
+    background-color: $dark-color;
+    width: 100%;
+    color: #004063;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+    border-bottom: 1px solid $light-color;
+    .back_btn {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #004063;
+    }
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .appointment-page-header-left-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: auto 0;
+    height: calc($sidebar-header-height - 8vh);
+    table {
+      width: 100%;
+      label {
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      input {
+        border: 1px solid $dark-color;
+      }
+    }
+  }
+  .appointment-page-header-right {
+    padding: 0.2rem 1rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: $dark-color;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #616161;
+    }
+  }
+  .page-form-submit {
+    display: flex;
+    height: 100%;
+    padding: 0 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    .btn-primary {
+      background-color: #004063;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+      min-width: 100px;
+      max-width: 150px;
+      &:focus {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+      }
+    }
+  }
+  .appointment-page-forms {
+    display: flex;
+    gap: $grid-gap;
+    label {
+      color: #fff;
+      font-weight: 600;
+      font-size: 12px;
+      margin-bottom: 0 !important;
+    }
+    select,
+    input {
+      border: none;
+      height: 25px;
+      font-size: 14px;
+      width: 100%;
+    }
+    .appointment-page-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      max-width: 250px;
+    }
+    .appointment-page-form-group-wrapper {
+      display: flex;
+      gap: 1rem;
+      select {
+        width: 100px;
+      }
+      margin-top: -6px;
+    }
+    .appointment-page-form-group {
+      width: 100%;
+      min-width: 50%;
+      max-width: 100%;
+      display: flex;
+      gap: 0.2rem;
+      small {
+        color: #fff;
+      }
+    }
+  }
+  .appointment-page-body-left-trees {
+    .one_2_many_tree {
+      position: relative;
+      width: 100%;
+      min-height: 20vh;
+      max-height: 30vh;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #fff;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #616161;
+      }
+      .table {
+        thead {
+          th {
+            position: sticky;
+            top: -1px;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+    .access_tree {
+      margin-top: 1rem;
+    }
+    .table {
+      padding: 5px !important;
+      th,
+      td {
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+      }
+      label {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+  }
+  .appointment-page-body-right-tree {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    max-height: 60vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #fff;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #616161;
+    }
+    .table {
+      thead {
+        th {
+          position: sticky;
+          top: -1px;
+          background-color: #fff;
+        }
+      }
+    }
+    .table {
+      padding: 5px !important;
+      th,
+      td {
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+      }
+      label {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+  }
+}

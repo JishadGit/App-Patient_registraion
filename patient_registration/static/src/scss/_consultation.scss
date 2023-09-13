@@ -1,0 +1,423 @@
+$light-color: #dff3f0;
+$dark-color: #64c5b3;
+$sidebar-width: 29vw;
+$sidebar-header-height: 26vh;
+$header-height: 26vh;
+$footer-height: 20vh;
+$grid-gap: 0.8rem;
+$body-height: calc(100vh - ($header-height + $footer-height) - $grid-gap * 2);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.page-forms {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  .page-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .page-form-group {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    label {
+      color: #fff;
+      font-weight: 600;
+      font-size: 12px;
+      margin-bottom: 0 !important;
+    }
+    select,
+    input {
+      border: none;
+      height: 25px;
+      font-size: 14px;
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .vr {
+    width: 1px;
+    height: 100%;
+    background-color: #fff;
+  }
+}
+.consultation-page {
+  width: 100%;
+  height: 100vh;
+  // overflow: hidden !important;
+  position: relative;
+  display: grid;
+  grid-template-columns: $sidebar-width 1fr;
+  grid-template-rows: 1fr;
+  gap: $grid-gap;
+  background-color: $light-color;
+  &.toggle-consultation-page {
+    .consultation-page-sidebar {
+      display: none;
+    }
+    .consultation-page-body {
+      grid-template-rows: 0.9fr 1.6fr 0.65fr;
+      grid-column: 1/3;
+      grid-row: 1/2;
+      .screen-header {
+        .screen-header-toggler {
+          display: flex;
+        }
+      }
+    }
+  }
+  .sidebar-toggler {
+    i {
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+
+  .page-form-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn-primary {
+      background-color: #004063;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+      min-width: 100px;
+      max-width: 150px;
+      &:focus {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+      }
+    }
+  }
+  .consultation-page-sidebar {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    background-color: #fff;
+    display: grid;
+    width: $sidebar-width;
+    grid-template-rows: $sidebar-header-height 1fr;
+    .screen-sidebar-header {
+      background-color: $light-color;
+      box-shadow: inset 8px -5px 10px rgba(0, 0, 0, 0.05);
+      .screen-sidebar-header-title {
+        background-color: $dark-color;
+        width: 100%;
+        color: #004063;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 8vh;
+        .back_btn{
+          cursor: pointer;
+          color: #004063;
+          font-size: 1.2rem;
+        }
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+        padding: 1rem;
+      }
+      .screen-sidebar-header-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        margin: auto 0;
+        height: calc($sidebar-header-height - 8vh);
+        .screen-sidebar-header-body-form {
+          width: 100%;
+          input {
+            border: 1px solid $dark-color;
+          }
+        }
+      }
+    }
+    .screen-sidebar-body {
+      .screen-sidebar-body-header {
+        background-color: $dark-color;
+        border: 1px solid $dark-color;
+        color: #fff;
+        margin-top: 0.5rem;
+        &.hasnotab {
+          padding: 0.5rem;
+        }
+        .nav-tabs {
+          border-bottom: none;
+          .nav-item {
+            flex: 1;
+            text-align: center;
+            .nav-link {
+              padding: 0;
+              border-radius: 0;
+              padding: 0.5rem 0;
+              color: #616161;
+              font-size: 0.9rem;
+              background-color: #fff;
+              &.active {
+                background-color: $dark-color;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+      .screen-sidebar-body-records {
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid $dark-color;
+      }
+      .screen-sidebar-records-body {
+        position: relative;
+        min-height: 24vh;
+        max-height: 24vh;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+        &::-webkit-scrollbar-track {
+          background: #fff;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #616161;
+        }
+        .table {
+          thead {
+            th {
+              position: sticky;
+              top: -1px;
+              background-color: #fff;
+              background-color: $light-color;
+            }
+          }
+        }
+      }
+      padding: 1rem;
+      .table {
+        th {
+          font-size: 0.9rem;
+        }
+        th,
+        td {
+          padding: 0.2rem 0.5rem;
+        }
+        td {
+          font-size: 0.9rem;
+        }
+        .badge {
+          cursor: pointer;
+          font-size: 12px;
+
+          font-weight: normal;
+        }
+        &.table-custom {
+          .badge {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .consultation-page-body {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 2.5fr 0.5fr;
+    grid-template-rows: $header-height $body-height $footer-height;
+    gap: $grid-gap;
+    // margin-bottom: 0.8rem;
+    .screen-header {
+      grid-column: 1/3;
+      grid-row: 1/2;
+      background-color: $dark-color;
+      padding: 0.2rem 1rem;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .screen-header-toggler {
+        display: none;
+        height: 100%;
+        padding-right: 1rem;
+        padding-top: 1rem;
+      }
+      &::-webkit-scrollbar {
+        height: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: $dark-color;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #616161;
+      }
+    }
+    .screen-body {
+      grid-column: 1/2;
+      grid-row: 2/3;
+      background-color: #fff;
+      max-height: 100%;
+      overflow-y: scroll;
+      gap: 0.5rem;
+      border: 1px solid #d3d3d3;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #fff;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #616161;
+      }
+      .screen-body-table {
+        padding-top: 5px;
+        padding-left: 5px;
+        .table {
+          thead {
+            td {
+              position: sticky;
+              top: -1px;
+              background-color: $light-color;
+              padding-top: 0.1rem;
+              padding-bottom: 0.1rem;
+            }
+          }
+          tbody {
+            td {
+              padding-top: 0.1rem;
+              padding-bottom: 0.1rem;
+              vertical-align: middle;
+              &:last-child {
+                width: 20%;
+                font-size: 13px;
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+    }
+    .screen-template {
+      background-color: $dark-color;
+      padding: 0.5rem;
+      grid-column: 2/3;
+      grid-row: 2/3;
+      &-header {
+        background-color: #fff;
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+      &-body {
+        margin-top: 1rem;
+        input[type="radio"]:checked + label {
+          background-color: #004063;
+          color: #fff;
+        }
+        label {
+          margin-top: 0.5rem;
+          padding: 0.3rem;
+          cursor: pointer;
+        }
+      }
+    }
+    .screen-footer {
+      grid-column: 1/3;
+      grid-row: 3/4;
+      background-color: $dark-color;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        height: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: $dark-color;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #616161;
+      }
+      .screen-footer-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0rem 1rem;
+        margin: auto 0;
+        width: 100%;
+      }
+    }
+  }
+}
+// @media (max-width:768px){
+//   .consultation-page{
+//     display: none;
+//   }
+// }
+@media (max-width: 1100px) {
+  .consultation-page {
+    &.toggle-consultation-page {
+      overflow-y: hidden !important;
+      .consultation-page-sidebar {
+        transform: translate(0);
+        transition: all 0.3s ease-in-out;
+        display: grid;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 9999;
+        width: 50vw;
+        background-color: $light-color;
+      }
+      .consultation-page-body {
+        
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+    .consultation-page-sidebar {
+      transition: all 0.3s ease-in-out;
+      transform: translateX(-200%);
+    }
+    .consultation-page-body {
+      grid-template-rows: 0.9fr 1.6fr 0.65fr;
+      grid-column: 1/3;
+      grid-row: 1/2;
+      .screen-header {
+        .screen-header-toggler {
+          display: flex;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="doctor_consultation_view_tree" model="ir.ui.view">
+        <field name="name">doctor.consultation.view.tree</field>
+        <field name="model">doctor.consultation</field>
+        <field name="arch" type="xml">
+            <tree string=""></tree>
+        </field>
+    </record>
+
+    <record id="doctor_consultation_view_form" model="ir.ui.view">
+        <field name="name">doctor.consultation.view.form</field>
+        <field name="model">doctor.consultation</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Consultation">
+                <style>
+                    .o_cp_controller{
+                    display:none !important;
+                    }
+                    .consultation-page{
+                    height: 91vh !important;
+                    }
+                    .consultation-page-body{
+                    grid-template-rows: 33vh calc(40vh - 1.6rem) 20vh !important;
+                    }
+                    .o_form_view.o_form_nosheet {
+                    display: block !important;
+                    padding-top: 0px !important;
+                    padding-right: 0px !important;
+                    padding-bottom: 0px !important;
+                    padding-left: 0px !important;
+                    }
+                    .consultation-page-sidebar {
+                    grid-template-rows: 30vh 1fr !important;
+                    }
+                </style>
+                <section>
+                    <div class="consultation-page">
+
+                        <div class="consultation-page-sidebar">
+                            <div class="screen-sidebar-header">
+                                <div class="screen-sidebar-header-title">
+                                    <a href="#" aria-label="back" class="back_btn">
+                                        <i class="fa fa-arrow-left" />
+                                    </a>
+                                    <h3>Doctor Consultation</h3>
+                                    <span class="sidebar-toggler" onclick="toggle_sidebar()">
+                                        <i class="fa fa-bars" />
+                                    </span>
+                                </div>
+                                <div class="screen-sidebar-header-body">
+                                    <table class="screen-sidebar-header-body-form">
+                                        <tr>
+                                            <th>
+                                                <label for="op_no">OP No</label>
+                                            </th>
+                                            <td>
+                                                <field name="op_no" class="form-control-sm w-100"
+                                                    widget="char" list="op_list"
+                                                    options="{'autocomplete': 'off'}" />
+                                                <!-- <datalist id="op_list">
+                                                    <option>OP1232</option>
+                                                    <option>OP1233</option>
+                                                    <option>OP1234</option>
+                                                </datalist> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <label for="date">Date</label>
+                                            </th>
+                                            <td>
+                                                <field name="date" class="form-control-sm w-100"
+                                                    widget="date" placeholder="dd/mm/yyyy" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="screen-sidebar-body">
+                                <div class="screen-sidebar-body-records">
+                                    <div class="screen-sidebar-body-header">
+                                        <ul class="nav nav-tabs" id="patientsTab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <strong class="nav-link active"
+                                                    id="pending-list-tab" data-toggle="tab"
+                                                    data-target="#pending-list" type="button"
+                                                    role="tab" aria-controls="pending-list"
+                                                    aria-selected="true">Walk In Patients</strong>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <strong class="nav-link" id="completed-list-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#completed-list" type="button"
+                                                    role="tab"
+                                                    aria-controls="completed-list"
+                                                    aria-selected="false">Walk Out Patients</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="screen-sidebar-records-body">
+                                        <div class="tab-content" id="patientContent">
+                                            <div class="tab-pane fade show active" id="pending-list"
+                                                role="tabpanel"
+                                                aria-labelledby="pending-list-tab">
+                                                <table class="table table-striped table-custom">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Patient</th>
+                                                            <th>OP No</th>
+                                                            <th>Time</th>
+                                                            <th class="text-center">View</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>A</td>
+                                                            <td>OP1238</td>
+                                                            <td>10:00 AM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-info">
+                                                                    Draft</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>B</td>
+                                                            <td>OP1239</td>
+                                                            <td>10:30 AM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-info">
+                                                                    Draft</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>C</td>
+                                                            <td>OP1240</td>
+                                                            <td>11:00 AM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-success">
+                                                                    In</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>D</td>
+                                                            <td>OP1241</td>
+                                                            <td>11:30 AM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-info">
+                                                                    Draft</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>E</td>
+                                                            <td>OP1242</td>
+                                                            <td>12:00 PM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-success">
+                                                                    In</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="completed-list"
+                                                role="tabpanel"
+                                                aria-labelledby="completed-list-tab">
+                                                <table class="table table-striped table-custom">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Patient</th>
+                                                            <th>OP No</th>
+                                                            <th>Time</th>
+                                                            <th class="text-center">View</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>E</td>
+                                                            <td>OP1235</td>
+                                                            <td>11:30 AM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-danger">
+                                                                    Out</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>F</td>
+                                                            <td>OP1236</td>
+                                                            <td>11:30 AM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-danger">
+                                                                    Out</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>G</td>
+                                                            <td>OP1237</td>
+                                                            <td>11:30 AM</td>
+                                                            <td>
+                                                                <span
+                                                                    class="badge badge-pill badge-danger">
+                                                                    Out</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="screen-sidebar-body-records mt-3">
+                                    <div class="screen-sidebar-body-header hasnotab">
+                                        <strong>Patients History</strong>
+                                    </div>
+                                    <div class="screen-sidebar-records-body">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Patient</th>
+                                                    <th class="text-center">View</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>12/03/2023</td>
+                                                    <td>A</td>
+                                                    <td class="text-center">
+                                                        <span class="badge badge-dark badge-pill">
+                                                            View</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12/03/2023</td>
+                                                    <td>B</td>
+                                                    <td class="text-center">
+                                                        <span class="badge badge-dark badge-pill">
+                                                            View</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12/03/2023</td>
+                                                    <td>C</td>
+                                                    <td class="text-center">
+                                                        <span class="badge badge-dark badge-pill">
+                                                            View</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12/03/2023</td>
+                                                    <td>D</td>
+                                                    <td class="text-center">
+                                                        <span class="badge badge-dark badge-pill">
+                                                            View</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="consultation-page-body">
+                            <div class="screen-header">
+                                <div class="sidebar-toggler screen-header-toggler"
+                                    onclick="toggle_sidebar()">
+                                    <i class="fa fa-bars"></i>
+                                </div>
+                                <div class="page-forms">
+                                    <div class="page-form">
+                                        <div class="page-form-group">
+                                            <label for="name">Name</label>
+                                            <field name="name" class="form-control-sm" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="age">Age</label>
+                                            <field name="age" class="form-control-sm" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="gender">Gender</label>
+                                            <field name="gender" class="form-control-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="page-form">
+                                        <div class="page-form-group">
+                                            <label for="method">Method</label>
+                                            <field name="method" class="form-control-sm w-100"
+                                                placeholder=" Select" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="indication">Indication</label>
+                                            <field name="indication" class="form-control-sm w-100"
+                                                placeholder=" Select" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="access">Access</label>
+                                            <field name="access" class="form-control-sm w-100"
+                                                placeholder=" Select" />
+                                        </div>
+                                    </div>
+                                    <div class="page-form">
+                                        <div class="page-form-group">
+                                            <label for="diagnosis">Diagnosis</label>
+                                            <field name="diagnosis" class="form-control-sm w-100"
+                                                placeholder=" Select" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="blood_flow">Blood Flow</label>
+                                            <field name="blood_flow" class="form-control-sm" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="dialyzer">Dialyzer</label>
+                                            <field name="dialyzer" class="form-control-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="page-form">
+                                        <div class="page-form-group">
+                                            <label for="heparin_dosage">Heparin Dosage</label>
+                                            <field name="heparin_dosage"
+                                                class="form-control-sm w-100" placeholder="Select" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="uf_removal">UF Removal</label>
+                                            <field name="uf_removal" class="form-control-sm" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="pre_hd">Pre HD</label>
+                                            <field name="pre_hd" class="form-control-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="page-form">
+                                        <div class="page-form-group">
+                                            <label for="post_hd">Post HD</label>
+                                            <field name="post_hd" class="form-control-sm" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="time_started">Time Started</label>
+                                            <field name="time_started" class="form-control-sm" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="time_closed">Time Closed</label>
+                                            <field name="time_closed" class="form-control-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="page-form">
+                                        <div class="page-form-group">
+                                            <label for="priming_fluid">Priming Fluid</label>
+                                            <field name="priming_fluid" class="form-control-sm" />
+                                        </div>
+                                        <div class="page-form-group">
+                                            <label for="dialysate_flow">Dialysate Flow</label>
+                                            <field name="dialysate_flow" class="form-control-sm" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="screen-body-table">
+                                    <table
+                                        class="table tablestriped table-bordered text-center w-100">
+                                        <thead>
+                                            <tr>
+                                                <td>Time</td>
+                                                <td>BP</td>
+                                                <td>TMP</td>
+                                                <td>VP</td>
+                                                <td>Temp</td>
+                                                <td>Medication</td>
+                                                <td>
+                                                    <strong>Remarks</strong>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>abc</td>
+                                                <td>-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="screen-template">
+                                <div class="screen-template-header">
+                                    <strong>TEMPLATES</strong>
+                                </div>
+                                <div class="screen-template-body">
+                                    <field name="template" widget="radio">
+                                        <radio name="template" string="Template 1" value="t1" />
+                                        <radio name="template" string="Template 2" value="t2" />
+                                        <radio name="template" string="Template 3" value="t3" />
+                                        <radio name="template" string="Template 4" value="t4" />
+                                        <radio name="template" string="Template 5" value="t5" />
+                                    </field>
+                                </div>
+
+
+                            </div>
+                            <div class="screen-footer">
+                                <div class="screen-footer-body">
+                                    <div class="page-forms">
+                                        <div class="page-form">
+                                            <div class="page-form-group">
+                                                <label for="started_by">Started By</label>
+                                                <field name="started_by" widget="selection"
+                                                    placeholder="Select" />
+                                            </div>
+                                            <div class="page-form-group">
+                                                <label for="closed_by">Closed By</label>
+                                                <field name="closed_by" widget="selection"
+                                                    placeholder="Select" />
+                                            </div>
+                                        </div>
+                                        <div class="page-form">
+                                            <div class="page-form-group">
+                                                <label for="complication_note">Complications during
+                                                    HD</label>
+                                                <field name="complication_note" widget="selection"
+                                                    placeholder="Select" />
+                                            </div>
+                                            <div class="page-form-group">
+                                                <label for="cleaning_fluid">Cleaning Fluid</label>
+                                                <field name="cleaning_fluid" widget="selection"
+                                                    placeholder="Select" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-forms" style="margin-left:1rem;">
+                                        <div class="page-form">
+                                            <div class="page-form-group">
+                                                <label for="patient_is" class="mr-2">Patient Is</label>
+                                                <field name="patient_is" />
+                                            </div>
+                                            <div class="page-form-group">
+                                                <label for="next_hd_on" class="mr-2">Next HD on</label>
+                                                <field name="next_hd_on" widget="date"
+                                                    placeholder="dd/mm/yyyy" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-form-submit" style="margin-left:1rem;">
+                                        <button type="object" class="btn btn-primary">
+                                            <i class="fa fa-floppy-o mr-2"></i>SAVE </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <script>
+                        function toggle_sidebar() {
+                        $('.consultation-page').toggleClass('toggle-consultation-page');
+                        }
+                    </script>
+
+                </section>
+            </form>
+        </field>
+    </record>
+
+    <record id="doctor_consultation_action" model="ir.actions.act_window">
+        <field name="name">Doctor Consultation</field>
+        <field name="res_model">doctor.consultation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="patient_registration_root_menu"
+        name="Patient Registration"
+        sequence="5" />
+
+    <menuitem
+        id="doctor_appointment_menu"
+        name="Doctor Consultation"
+        action="doctor_consultation_action"
+        parent="patient_registration_root_menu"
+        sequence="10" />
+
+</odoo>
+
+
+    

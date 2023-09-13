@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="patient_appointment_report_template">
+        <t t-call="web.html_container">
+            <style>
+                .table {
+                color: #004063;
+                }
+                .table-striped tbody tr:nth-of-type(2n+1) {
+                background-color: rgba(131, 208, 194, 0.25);
+                }
+                .table-bordered th, .table-bordered td {
+                border: none;
+                }
+                .table thead th {
+                vertical-align: bottom;
+                border-bottom: 6px solid #004063;
+                background-color: #64c5b3;
+                border: 1px solid #83d0c2;
+                border-bottom-width: 1px;
+                color: #004063;
+                }
+                b, strong {
+                font-weight: bolder;
+                color: #004063;
+                }
+            </style>
+            <div style="height: 10px;"></div>
+            <h3 style="text-align:center;">
+                <strong>Patient Appointment Report</strong>
+            </h3>
+            <div style="height: 30px;" class="text-center">
+                <t t-if="from_date and to_date">
+                    <small>
+                        <strong>
+                            From Date:
+                        </strong>
+                        <t t-esc="from_date" t-if="from_date" />
+                        <span t-if="from_date and to_date">-</span>
+                        <strong>
+                            To Date:
+                        </strong>
+                        <t t-esc="to_date" t-if="to_date" />
+                    </small>
+                </t>
+            </div>
+            <div class="page">
+                <table class="table table-bordered w-100">
+                    <thead>
+                        <tr>
+                            <th style="width: 61px;">SI No.</th>
+                            <th style="width: 9%;">DATE</th>
+                            <th style="width: 100px;">REG.NO.</th>
+                            <th style="width: 15%;">PATIENT NAME</th>
+                            <th style="width: 9%">DOB</th>
+                            <th style="width: 15%">AGE</th>
+                            <th style="width: 90px;">GENDER</th>
+                            <th style="width: 89px;">WEIGHT</th>
+                            <th style="width: 119px;">PHONE</th>
+                            <th>ADDRESS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="sl_no" t-value="1" />
+                        <t t-foreach="appointments" t-as="appointment">
+                            <tr>
+                                <td>
+                                    <span t-esc="sl_no" />
+                                </td>
+                                <t t-set="sl_no" t-value="sl_no+1" />
+                                <td>
+                                    <t t-esc="appointment['create_date']" />
+                                </td>
+                                <td>
+                                    <t t-esc="appointment['reg_no']" />
+                                </td>
+                                <td>
+                                    <t t-esc="appointment['patient_type']" /> - <t
+                                        t-esc="appointment['patient_name']" />
+                                </td>
+                                <td class="text-center">
+                                    <t t-esc="appointment['day']" />- <t
+                                        t-esc="appointment['month']" />- <t
+                                        t-esc="appointment['year']" /></td>
+                                <td class="text-center">
+                                    <t t-esc="appointment['age_days']" />days- <t
+                                        t-esc="appointment['age_months']" />months- <t
+                                        t-esc="appointment['age_years']" />years </td>
+                                <td>
+                                    <t t-esc="appointment['gender']" />
+                                </td>
+                                <td><t t-esc="appointment['weight']" />Kg</td>
+                                <td>
+                                    <t t-esc="appointment['phone']" />
+                                </td>
+                                <td>
+                                    <t t-esc="appointment['address']" />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+            </div>
+        </t>
+    </template>
+
+    <report
+        id="patient_appointment_report_action"
+        string="Patient Appointment Report"
+        model="patient"
+        report_type="qweb-html"
+        file="patient_registration.patient_appointment_report_template"
+        name="patient_registration.patient_appointment_report_template"
+    />
+
+    <!-- Report Menu -->
+    <menuitem
+        id="patient_report_root_menu"
+        name="Reports"
+        parent="patient_registration_root_menu"
+        sequence="100" />
+    <menuitem
+        id="patient_appointment_report_view_menu"
+        name="Patient Appointment Report"
+        action="patient_appointment_report_view_action"
+        parent="patient_report_root_menu"
+        sequence="20" />
+
+</odoo> 

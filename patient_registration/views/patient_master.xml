@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Tree View -->
+    <record id="patient_master_view_tree" model="ir.ui.view">
+        <field name="name">patient.master.view.tree</field>
+        <field name="model">patient.master</field>
+        <field name="arch" type="xml">
+            <tree string="Patient Master">
+                <field name="reg_no" string="Registration Number" />
+                <field name="patient_name" />
+            </tree>
+        </field>
+    </record>
+<!-- Kanban View -->
+    <record id="patient_master_view_kanban" model="ir.ui.view">
+        <field name="name">patient.master.view.kanban</field>
+        <field name="model">patient.master</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image_patient" widget="image" class="o_image_64_contain" />
+                <field name="patient_name" />
+                <field name="reg_no" string="Registration Number" />
+                <field name="age_years" />
+                <field name="phone" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click"
+                            style="background-color: #64c5b3; border: 3px solid #c4ded9; color: white;">
+                            <div class="o_kanban_image">
+                                <field name="image_patient" widget="image"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="patient_name"
+                                        style="font-weight: bold; color: #243742; !important" />
+                                </strong>
+                                <ul>
+                                    <li>ID: <field name="reg_no" /></li>
+                                    <li>Age: <field name="age_years" /></li>
+                                    <li>Gender: <field name="gender" /></li>
+                                    <li>Phone: <field name="phone" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+<!-- Form View -->
+    <record id="view_patient_master_form" model="ir.ui.view">
+        <field name="name">patient.master.form</field>
+        <field name="model">patient.master</field>
+        <field name="arch" type="xml">
+            <form>
+                <style>
+                    h4, .h4 {
+                        font-size: 1.3rem;
+                        color: #004063;
+                    }
+                    .o_form_view .o_form_sheet_bg .o_form_sheet {
+                        background-color: #64c5b3; !important;
+                        color:white; !important;
+                        border: 10px solid #c4ded9;
+                        border-radius: 5px;
+                    }
+                    .o_form_view .o_field_widget {
+                        color: #243742; !important;
+                    }
+                    .o_form_view .o_form_sheet_bg{
+                        background: #cceee7; !important;
+                    }
+                    .o_field_widget.o_field_image.oe_avatar img {
+                        background-color: #0a4d6b;
+                    }
+                    .o_form_view .o_group .o_td_label .o_form_label {
+                        width: max-content;}
+                    .container {
+                        display: flex;
+                    }
+                    .image-container {
+                        position: absolute;
+                        top: 20px;
+                        right: 65px;
+                        margin: 10px;
+                    }
+                    .right-container{
+                        float:right;
+                        position: absolute;
+                        top: 165px;
+                        right: 30px;
+                        margin: 10px;
+                    }
+                    .left-container{
+                        float:left;
+                    }
+                    .o_form_label {
+                        margin: 1px 0px 8px 17px !important;
+                        margin-top: 1px !important;
+                        margin-right: 87px !important;
+                        margin-bottom: 8px !important;
+                        margin-left: 17px !important;
+                    }
+                </style>
+                <header>
+                    <div>
+                        <h1>Patient Master</h1>
+                    </div>
+                </header>
+                <sheet>
+                    <!-- Register Number -->
+                    <group>
+                        <field name="reg_no" readonly="1" invisible="1" />
+                    </group>
+                    <!-- Image Field -->
+                    <div class="image-container">
+                        <field name="image_patient" widget="image" class="oe_avatar"
+                            options="{'preview_image': 'image_128'}" />
+                    </div>
+                    <!-- Patient Type and Name -->
+                    <div class="container">
+                        <h4>PATIENT NAME :</h4>
+                        <field name="patient_type" string="Patient name"
+                            style="width:82px; margin-left: 5%;"
+                            placeholder="Select" />
+                        <field name="patient_name" placeholder="Patient Name" style="width:370px"></field>
+                    </div>
+                    <!-- Date of Birth -->
+                    <div class="container">
+                        <h4>BIRTH DATE :</h4>
+                        <field name="day" placeholder="Day" style="width:82px; margin-left: 77px" />
+                        <field name="month" placeholder="Month" style="width:82px;" />
+                        <field name="year" placeholder="Year" style="width:82px;" />
+                    </div>
+                    <!-- Age -->
+                    <div class="container">
+                        <h4>AGE :</h4>
+                        <field name="age_years" placeholder="Years"
+                            style="width:82px; margin-left: 134px" />
+                        <field name="age_months" placeholder="Months" style="width:82px;" />
+                        <field name="age_days" placeholder="Days" style="width:82px;" />
+                    </div>
+                    <!-- Style element-Line -->
+                    <div style="margin: 20px 0;">
+                        <hr style="border-top: 1.5px solid #0a4d6b91;" />
+                    </div>
+                    <!-- Place, Address, and Phone -->
+                    <div class="right-container">
+                        <group>
+                            <field name="place" string="PLACE" style="width:300px" placeholder="State" />
+                            <field name="address" string="ADDRESS" placeholder="Present Address" />
+                            <field name="phone" string="PHONE" placeholder="+91-" />
+                        </group>
+                    </div>
+                    <!-- Weight and Gender and other fields -->
+                    <div class="left-container">
+                        <group>
+                            <field name="weight" string="WEIGHT" />
+                            <field name="gender" placeholder="Select" string="GENDER" />
+                            <field name="blood_group" string="BLOOD GROUP" placeholder="Select" />
+                            <field name="referred_by" string="REFFERED BY" placeholder="" />
+                            <field name="doc_no" string="DOC NO." />
+                        </group>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action for Patient Master Kanban View -->
+    <record id="patient_master_action_kanban" model="ir.actions.act_window">
+        <field name="name">Patient Master</field>
+        <field name="res_model">patient.master</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+    <!-- Add the Kanban view to the menu -->
+    <menuitem
+        id="menu_patient_details"
+        name="Patients"
+        action="patient_master_action_kanban"
+        parent="patient_registration_root_menu"
+        sequence="12" />
+</odoo>

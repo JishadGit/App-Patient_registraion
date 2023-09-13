@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="assets_backend" name="Backend Assets" inherit_id="web.assets_backend" active="True">
+        <xpath expr="." position="inside">
+            <!-- <link rel="stylesheet" type="text/scss" href="/patient_registration/static/src/scss/style.scss"/> -->
+            <link rel="stylesheet" type="text/css" href="/patient_registration/static/src/css/styles.css"/>
+        </xpath>
+    </template>
+
+    
+</odoo>

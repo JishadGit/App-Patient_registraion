@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="patient_view_tree" model="ir.ui.view">
+        <field name="name">patient.view.tree</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patient Tree">
+                <field name="reg_no" />
+                <field name="patient_name" />
+                <field name="day" />
+                <field name="month" />
+                <field name="year" />
+                <field name="age_years" />
+                <field name="age_months" />
+                <field name="age_days" />
+                <field name="gender" />
+                <field name="weight" widget="float_time" />
+                <field name="place" />
+                <field name="address" />
+                <field name="phone" />
+                <field name="blood_group" />
+                <field name="referred_by" />
+                <field name="doc_no" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    <!-- Form View -->
+    <record id="patient_view_form" model="ir.ui.view">
+        <field name="name">patient.view.form</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient Form" editable="true">
+                <style> .o_cp_controller{ display:none !important;} .o_list_table{ cursor: pointer;
+                    border-collapse: initial; } .appointment-page .appointment-page-header-right {
+                    padding: 0.9rem 2rem; } .o_form_view.o_form_nosheet { display: block;
+                    padding-top: 1px; padding-right:1px; padding-bottom: 1px; padding-left: 1px; }
+                    .appointment-page { grid-template-rows: 26vh calc(57vh - 1.6rem) 10vh; }<!--new
+                    styles -->
+                    .appointment-page-header-right .appointment-page-forms { display: flex;
+                    flex-wrap: wrap; gap: 20px; } .appointment-page-header-right
+                    .appointment-page-form { flex-basis: 50%; max-width: 50%; }
+                    .appointment-page-header-right .appointment-page-form:first-child {
+                    margin-right: auto; }<!-- Statusbar --> .btn-secondary.disabled, .btn-secondary:disabled { color:
+                    #fff; background-color: #64C5B3; border-color: #ffffff5e;}
+                    .btn-primary.disabled, .btn-primary:disabled { color: #fff; background-color:
+                    #478C7F; border-color: #ffffff4f; } .btn.disabled, .btn:disabled { opacity:
+                    100%; border-radius: 100px;} .o_form_view .o_field_widget { margin-bottom: 5px;
+                    color: #004063; } </style>
+                <div class="appointment-page">
+                    <div class="appointment-page-header-left">
+                        <div class="appointment-page-title">
+
+                            <a href="#" aria-label="back" class="back_btn">
+                                <i class="fa fa-arrow-left"></i>
+                            </a>
+                            <h3>Appointments</h3>
+                            <span></span>
+                        </div>
+                        <div class="appointment-page-header-left-form">
+                            <table>
+                                <tr>
+                                    <th style="width: 25%">
+                                        <label for="reg_no">Reg No</label>
+                                    </th>
+                                    <td class="text-right">
+                                        <field name="reg_type" widget="selection"
+                                            class="form-control-sm w-100">
+                                        </field>
+                                    </td>
+                                    <td>
+                                        <field name="reg_no" class="form-control-sm w-100" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 25%">
+                                        <label for="patient_name">Patient</label>
+                                    </th>
+                                    <td class="text-right">
+                                        <field name="patient_type" widget="selection"
+                                            class="form-control-sm w-100">
+                                        </field>
+                                    </td>
+                                    <td>
+                                        <field name="patient_master_id"
+                                            class="form-control-sm w-100"
+                                            attrs="{'invisible': [('reg_type', '!=', 'existing')]}" />
+                                    </td>
+                                    <td>
+                                        <field name="patient_name" class="form-control-sm w-100"
+                                            attrs="{'invisible': [('reg_type', '!=', 'new')]}"
+                                            options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True, 'display_name': 'patient_name'}"
+                                            widget="many2one" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="appointment-page-header-left-form">
+                            <table>
+                                <tr>
+                                    <th style="width: 25%">
+                                        <label for="reg_no">Reg No</label>
+                                    </th>
+                                    <td class="text-right">
+                                        <field name="reg_type" widget="selection"
+                                            class="form-control-sm w-100">
+                                        </field>
+                                    </td>
+                                    <td>
+                                        <field name="reg_no" class="form-control-sm w-100"
+                                            attrs="{'readonly': [('reg_type', '=', 'new')]}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 25%">
+                                        <label for="patient_name">Patient</label>
+                                    </th>
+                                    <td class="text-right">
+                                        <field name="patient_type" widget="selection"
+                                            class="form-control-sm w-100">
+                                        </field>
+                                    </td>
+                                    <td>
+                                        <field name="patient_name" class="form-control-sm w-100"
+                                            attrs="{'invisible': [('reg_type', '!=', 'existing')]}" />
+                                    </td>
+                                    <td>
+                                        <field name="patient_name" class="form-control-sm w-100"
+                                            attrs="{'invisible': [('reg_type', '!=', 'new')]}" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="appointment-page-header-right">
+                        <div class="appointment-page-header-right">
+                            <div class="appointment-page-forms">
+                                <div class="appointment-page-form">
+                                    <label for="day">DOB</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="day" class="form-control-sm text-center"
+                                            placeholder="dd" />
+                                        <small class="h2">/</small>
+                                        <field name="month" class="form-control-sm text-center"
+                                            placeholder="mm" />
+                                        <small class="h2">/</small>
+                                        <field name="year" class="form-control-sm text-center"
+                                            placeholder="yyyy" />
+                                    </div>
+                                    <label for="age_years">AGE</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="age_years" class="form-control-sm text-center"
+                                            placeholder="years" />
+                                        <field name="age_months" class="form-control-sm text-center"
+                                            placeholder="months" />
+                                        <field name="age_days" class="form-control-sm text-center"
+                                            placeholder="days" />
+                                    </div>
+                                    <div class="appointment-page-form-group-wrapper">
+                                        <div style="padding-bottom: 0px;padding-top: 5px;">
+                                            <label for="gender">GENDER</label>
+                                            <div class="appointment-page-form-group">
+                                                <field name="gender" class="form-control-sm"></field>
+                                            </div>
+                                        </div>
+                                        <div style="padding-bottom: 0px;padding-top: 5px;">
+                                            <label for="weight">WEIGHT</label>
+                                            <div class="appointment-page-form-group">
+                                                <field name="weight" widget="float"
+                                                    class="form-control-sm text-center" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="appointment-page-form">
+                                    <label for="place">PLACE</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="place" class="form-control-sm"
+                                            placeholder="street..." />
+                                    </div>
+                                    <label for="address">ADDRESS</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="address" class="form-control-sm"
+                                            placeholder="street 2..." />
+                                    </div>
+                                    <label for="phone">PHONE</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="phone" class="form-control-sm"
+                                            placeholder="+91-" />
+                                    </div>
+                                </div>
+                                <div class="appointment-page-form">
+                                    <label for="blood_group">BLOOD GROUP</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="blood_group" class="form-control-sm"></field>
+                                    </div>
+                                    <label for="referred_by">REFERRED BY</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="referred_by" class="form-control-sm" />
+                                    </div>
+                                    <label for="doc_no">REFERRING DOC NO.</label>
+                                    <div class="appointment-page-form-group">
+                                        <field name="doc_no"
+                                            class="form-control-sm" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appointment-page-body-left">
+                        <div class="appointment-page-body-left-trees">
+                            <div class="one_2_many_tree">
+                                <table class="table table-striped table-bordered">
+                                    <!-- <label for="investigations_ids"
+                                    class="oe_edit_only"></label> -->
+                                    <field name="investigations_ids" mode="tree,kanban"
+                                        widget="one2many_list">
+                                        <tree editable="bottom">
+                                            <field name="investigation_type" />
+                                            <field name="date" />
+                                            <field name="report" />
+                                        </tree>
+                                    </field>
+                                </table>
+                            </div>
+                            <div class="access_tree">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 20%;">
+                                                <label for="access">Access</label>
+                                            </th>
+                                            <td>
+                                                <field name="access"></field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 20%;">
+                                                <label for="access_used">Access Used</label>
+                                            </th>
+                                            <td>
+                                                <field name="access_used"></field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 20%;">
+                                                <label for="avf_started_on">AVF Started on</label>
+                                            </th>
+                                            <td style="display: block; important!">
+                                                <field name="avf_started_on"></field>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appointment-page-body-right">
+                        <div class="appointment-page-body-right-tree">
+                            <table class="table table-striped table-bordered">
+                                <field name="test_ids" mode="tree,kanban"
+                                    widget="one2many_list">
+                                    <tree string="Test" editable="bottom">
+                                        <field name="hbs_ag" />
+                                        <field name="anti_hbs_ab" />
+                                        <field name="anti_hcv" />
+                                        <field name="hiv_i_ii" />
+                                    </tree>
+                                </field>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="appointment-page-footer">
+                        <div
+                            style="margin-right: 1rem; position: absolute; margin-top: 20px; margin-left: 20px;">
+                            <field name="state" widget="statusbar"
+                                statusbar_visible="draft,confirmed" />
+                        </div>
+
+                        <div class="page-form-submit" style="margin-left: 1rem">
+                            <div class="oe_read_only">
+                                <button type="button"
+                                    class="btn btn-primary btn-sm mr-2 float-left edit-btn"
+                                    name="edit" onclick="$('.o_form_button_edit').click();"
+                                    attrs="{'invisible': [('state', '!=', 'draft')]}">
+                                    <i class="fa fa-pencil-square-o mr-2"></i>EDIT </button>
+                            </div>
+                            <div class="oe_read_only">
+                                <button type="button"
+                                    class="btn btn-light btn-sm mr-2 float-left create-btn px-4"
+                                    name="create" onclick="$('.o_form_button_create').click();">
+                                    <i class="fa fa-plus-square mr-2"></i>CREATE </button>
+                            </div>
+                            <div class="oe_edit_only">
+                                <button type="button"
+                                    class="btn btn-primary btn-sm mr-2 save-btn py-1"
+                                    name="save" onclick="$('.o_form_button_save').click();">
+                                    <i class="fa fa-floppy-o mr-2"></i>SAVE </button>
+                            </div>
+                            <div class="oe_edit_only">
+                                <button type="button"
+                                    class="btn btn-light btn-sm mr-2 discard-btn px-4 py-1"
+                                    name="action_discard"
+                                    onclick="$('.o_form_button_cancel').click();">
+                                    <i class="fa fa-times mr-2"></i>DISCARD </button>
+                            </div>
+                            <div>
+                                <button type="object"
+                                    class="btn btn-primary btn-sm mr-2 confirm-btn px-4 py-1"
+                                    name="action_confirm"
+                                    attrs="{'invisible': [('state', '=', 'confirmed')]}">
+                                    <i class="fa fa-check-square mr-2"></i>CONFIRM </button>
+                            </div>
+                            <div>
+                                <button type="button"
+                                    class="btn btn-primary btn-sm print-btn px-4 py-1"
+                                    name="action_print"
+                                    attrs="{'invisible': [('state', '!=', 'confirmed')]}">
+                                    <i class="fa fa-print mr-2"></i>PRINT </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- Doctor Appointment Action -->
+    <record id="patient_action" model="ir.actions.act_window">
+        <field name="name">Doctor Appointments</field>
+        <field name="res_model">patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="patient_menu"
+        name="Appointment"
+        action="patient_action"
+        parent="patient_registration_root_menu"
+        sequence="11" />
+</odoo>

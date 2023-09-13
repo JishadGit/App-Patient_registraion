@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doctor_consultation,doctor.consultation,model_doctor_consultation,,1,1,1,1
+access_doctor_consultation_walk_in,doctor.consultation.walk.in,model_doctor_consultation_walk_in,,1,1,1,1
+access_patient_history,patient.history,model_patient_history,,1,1,1,1
+access_patient,patient,model_patient,,1,1,1,1
+access_patient_investigations,patient.investigations,model_patient_investigations,,1,1,1,1
+access_patient_test,patient.test,model_patient_test,,1,1,1,1
+access_patient_master,patient.master,model_patient_master,,1,1,1,1
+access_patient_appointment_report_wizard,patient.appointment.report.wizard,model_patient_appointment_report_wizard,,1,1,1,1

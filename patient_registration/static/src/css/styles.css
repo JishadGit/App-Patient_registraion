@@ -1,0 +1,604 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.page-forms {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.page-forms .page-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.page-forms .page-form-group {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+}
+.page-forms .page-form-group label {
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 0 !important;
+}
+.page-forms .page-form-group select,
+.page-forms .page-form-group input {
+  border: none;
+  height: 25px;
+  font-size: 14px;
+  min-width: 100%;
+  max-width: 100%;
+}
+.page-forms .vr {
+  width: 1px;
+  height: 100%;
+  background-color: #fff;
+}
+
+.consultation-page {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: 29vw 1fr;
+  grid-template-rows: 1fr;
+  gap: 0.8rem;
+  background-color: #dff3f0;
+}
+.consultation-page.toggle-consultation-page .consultation-page-sidebar {
+  display: none;
+}
+.consultation-page.toggle-consultation-page .consultation-page-body {
+  grid-template-rows: 0.9fr 1.6fr 0.65fr;
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+.consultation-page.toggle-consultation-page .consultation-page-body .screen-header .screen-header-toggler {
+  display: flex;
+}
+.consultation-page .sidebar-toggler i {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.consultation-page .page-form-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.consultation-page .page-form-submit .btn-primary {
+  background-color: #004063;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  min-width: 100px;
+  max-width: 150px;
+}
+.consultation-page .page-form-submit .btn-primary:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+}
+.consultation-page .consultation-page-sidebar {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  background-color: #fff;
+  display: grid;
+  width: 29vw;
+  grid-template-rows: 26vh 1fr;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-header {
+  background-color: #dff3f0;
+  box-shadow: inset 8px -5px 10px rgba(0, 0, 0, 0.05);
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-header .screen-sidebar-header-title {
+  background-color: #64c5b3;
+  width: 100%;
+  color: #004063;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 8vh;
+  padding: 1rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-header .screen-sidebar-header-title .back_btn {
+  cursor: pointer;
+  color: #004063;
+  font-size: 1.2rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-header .screen-sidebar-header-title h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-header .screen-sidebar-header-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: auto 0;
+  height: 18vh;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-header .screen-sidebar-header-body .screen-sidebar-header-body-form {
+  width: 100%;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-header .screen-sidebar-header-body .screen-sidebar-header-body-form input {
+  border: 1px solid #64c5b3;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body {
+  padding: 1rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-body-header {
+  background-color: #64c5b3;
+  border: 1px solid #64c5b3;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-body-header.hasnotab {
+  padding: 0.5rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-body-header .nav-tabs {
+  border-bottom: none;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-body-header .nav-tabs .nav-item {
+  flex: 1;
+  text-align: center;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-body-header .nav-tabs .nav-item .nav-link {
+  padding: 0;
+  border-radius: 0;
+  padding: 0.5rem 0;
+  color: #616161;
+  font-size: 0.9rem;
+  background-color: #fff;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-body-header .nav-tabs .nav-item .nav-link.active {
+  background-color: #64c5b3;
+  color: #fff;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-body-records {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #64c5b3;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-records-body {
+  position: relative;
+  min-height: 24vh;
+  max-height: 24vh;
+  overflow-y: scroll;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-records-body::-webkit-scrollbar {
+  width: 5px;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-records-body::-webkit-scrollbar-track {
+  background: #fff;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-records-body::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .screen-sidebar-records-body .table thead th {
+  position: sticky;
+  top: -1px;
+  background-color: #fff;
+  background-color: #dff3f0;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .table th {
+  font-size: 0.9rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .table th,
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .table td {
+  padding: 0.2rem 0.5rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .table td {
+  font-size: 0.9rem;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .table .badge {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: normal;
+}
+.consultation-page .consultation-page-sidebar .screen-sidebar-body .table.table-custom .badge {
+  width: 100%;
+}
+.consultation-page .consultation-page-body {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: grid;
+  grid-template-columns: 2.5fr 0.5fr;
+  grid-template-rows: 26vh calc(54vh - 1.6rem) 20vh;
+  gap: 0.8rem;
+}
+.consultation-page .consultation-page-body .screen-header {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  background-color: #64c5b3;
+  padding: 0.2rem 1rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.consultation-page .consultation-page-body .screen-header .screen-header-toggler {
+  display: none;
+  height: 100%;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+.consultation-page .consultation-page-body .screen-header::-webkit-scrollbar {
+  height: 5px;
+}
+.consultation-page .consultation-page-body .screen-header::-webkit-scrollbar-track {
+  background: #64c5b3;
+}
+.consultation-page .consultation-page-body .screen-header::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.consultation-page .consultation-page-body .screen-body {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: #fff;
+  max-height: 100%;
+  overflow-y: scroll;
+  gap: 0.5rem;
+  border: 1px solid #d3d3d3;
+}
+.consultation-page .consultation-page-body .screen-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.consultation-page .consultation-page-body .screen-body::-webkit-scrollbar-track {
+  background: #fff;
+}
+.consultation-page .consultation-page-body .screen-body::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.consultation-page .consultation-page-body .screen-body .screen-body-table {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.consultation-page .consultation-page-body .screen-body .screen-body-table .table thead td {
+  position: sticky;
+  top: -1px;
+  background-color: #dff3f0;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+.consultation-page .consultation-page-body .screen-body .screen-body-table .table tbody td {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  vertical-align: middle;
+}
+.consultation-page .consultation-page-body .screen-body .screen-body-table .table tbody td:last-child {
+  width: 20%;
+  font-size: 13px;
+  text-align: left;
+}
+.consultation-page .consultation-page-body .screen-template {
+  background-color: #64c5b3;
+  padding: 0.5rem;
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+.consultation-page .consultation-page-body .screen-template-header {
+  background-color: #fff;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+.consultation-page .consultation-page-body .screen-template-body {
+  margin-top: 1rem;
+}
+.consultation-page .consultation-page-body .screen-template-body input[type=radio]:checked + label {
+  background-color: #004063;
+  color: #fff;
+}
+.consultation-page .consultation-page-body .screen-template-body label {
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+.consultation-page .consultation-page-body .screen-footer {
+  grid-column: 1/3;
+  grid-row: 3/4;
+  background-color: #64c5b3;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: scroll;
+}
+.consultation-page .consultation-page-body .screen-footer::-webkit-scrollbar {
+  height: 5px;
+}
+.consultation-page .consultation-page-body .screen-footer::-webkit-scrollbar-track {
+  background: #64c5b3;
+}
+.consultation-page .consultation-page-body .screen-footer::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.consultation-page .consultation-page-body .screen-footer .screen-footer-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem;
+  margin: auto 0;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .consultation-page.toggle-consultation-page {
+    overflow-y: hidden !important;
+  }
+  .consultation-page.toggle-consultation-page .consultation-page-sidebar {
+    transform: translate(0);
+    transition: all 0.3s ease-in-out;
+    display: grid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 9999;
+    width: 50vw;
+    background-color: #dff3f0;
+  }
+  .consultation-page.toggle-consultation-page .consultation-page-body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .consultation-page .consultation-page-sidebar {
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-200%);
+  }
+  .consultation-page .consultation-page-body {
+    grid-template-rows: 0.9fr 1.6fr 0.65fr;
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+  .consultation-page .consultation-page-body .screen-header .screen-header-toggler {
+    display: flex;
+  }
+}
+.appointment-page {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 0.6fr 0.4fr 1fr;
+  grid-template-rows: 26vh calc(64vh - 1.6rem) 10vh;
+  background-color: #dff3f0;
+}
+.appointment-page .appointment-page-header-left {
+  background-color: #64c5b3;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.appointment-page .appointment-page-header-right {
+  background-color: #64c5b3;
+  grid-column: 2/4;
+  grid-row: 1/2;
+}
+.appointment-page .appointment-page-body-left {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  background-color: #fff;
+}
+.appointment-page .appointment-page-body-right {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  background-color: #fff;
+}
+.appointment-page .appointment-page-footer {
+  grid-column: 1/4;
+  grid-row: 3/4;
+  background-color: #64c5b3;
+  position: relative;
+  overflow-x: scroll;
+}
+.appointment-page .appointment-page-footer::-webkit-scrollbar {
+  height: 5px;
+}
+.appointment-page .appointment-page-footer::-webkit-scrollbar-track {
+  background: #64c5b3;
+}
+.appointment-page .appointment-page-footer::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.appointment-page .appointment-page-title {
+  background-color: #64c5b3;
+  width: 100%;
+  color: #004063;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 8vh;
+  border-bottom: 1px solid #dff3f0;
+}
+.appointment-page .appointment-page-title .back_btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #004063;
+}
+.appointment-page .appointment-page-title h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.appointment-page .appointment-page-header-left-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: auto 0;
+  height: 18vh;
+}
+.appointment-page .appointment-page-header-left-form table {
+  width: 100%;
+}
+.appointment-page .appointment-page-header-left-form table label {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.appointment-page .appointment-page-header-left-form table input {
+  border: 1px solid #64c5b3;
+}
+.appointment-page .appointment-page-header-right {
+  padding: 0.2rem 1rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.appointment-page .appointment-page-header-right::-webkit-scrollbar {
+  height: 5px;
+}
+.appointment-page .appointment-page-header-right::-webkit-scrollbar-track {
+  background: #64c5b3;
+}
+.appointment-page .appointment-page-header-right::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.appointment-page .page-form-submit {
+  display: flex;
+  height: 100%;
+  padding: 0 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+.appointment-page .page-form-submit .btn-primary {
+  background-color: #004063;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  min-width: 100px;
+  max-width: 150px;
+}
+.appointment-page .page-form-submit .btn-primary:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+}
+.appointment-page .appointment-page-forms {
+  display: flex;
+  gap: 0.8rem;
+}
+.appointment-page .appointment-page-forms label {
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 0 !important;
+}
+.appointment-page .appointment-page-forms select,
+.appointment-page .appointment-page-forms input {
+  border: none;
+  height: 25px;
+  font-size: 14px;
+  width: 100%;
+}
+.appointment-page .appointment-page-forms .appointment-page-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 250px;
+}
+.appointment-page .appointment-page-forms .appointment-page-form-group-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-top: -6px;
+}
+.appointment-page .appointment-page-forms .appointment-page-form-group-wrapper select {
+  width: 100px;
+}
+.appointment-page .appointment-page-forms .appointment-page-form-group {
+  width: 100%;
+  min-width: 50%;
+  max-width: 100%;
+  display: flex;
+  gap: 0.2rem;
+}
+.appointment-page .appointment-page-forms .appointment-page-form-group small {
+  color: #fff;
+}
+.appointment-page .appointment-page-body-left-trees .one_2_many_tree {
+  position: relative;
+  width: 100%;
+  min-height: 20vh;
+  max-height: 30vh;
+  overflow-y: scroll;
+}
+.appointment-page .appointment-page-body-left-trees .one_2_many_tree::-webkit-scrollbar {
+  width: 5px;
+}
+.appointment-page .appointment-page-body-left-trees .one_2_many_tree::-webkit-scrollbar-track {
+  background: #fff;
+}
+.appointment-page .appointment-page-body-left-trees .one_2_many_tree::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.appointment-page .appointment-page-body-left-trees .one_2_many_tree .table thead th {
+  position: sticky;
+  top: -1px;
+  background-color: #fff;
+}
+.appointment-page .appointment-page-body-left-trees .access_tree {
+  margin-top: 1rem;
+}
+.appointment-page .appointment-page-body-left-trees .table {
+  padding: 5px !important;
+}
+.appointment-page .appointment-page-body-left-trees .table th,
+.appointment-page .appointment-page-body-left-trees .table td {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.appointment-page .appointment-page-body-left-trees .table label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.appointment-page .appointment-page-body-right-tree {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+.appointment-page .appointment-page-body-right-tree::-webkit-scrollbar {
+  width: 5px;
+}
+.appointment-page .appointment-page-body-right-tree::-webkit-scrollbar-track {
+  background: #fff;
+}
+.appointment-page .appointment-page-body-right-tree::-webkit-scrollbar-thumb {
+  background: #616161;
+}
+.appointment-page .appointment-page-body-right-tree .table thead th {
+  position: sticky;
+  top: -1px;
+  background-color: #fff;
+}
+.appointment-page .appointment-page-body-right-tree .table {
+  padding: 5px !important;
+}
+.appointment-page .appointment-page-body-right-tree .table th,
+.appointment-page .appointment-page-body-right-tree .table td {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.appointment-page .appointment-page-body-right-tree .table label {
+  font-size: 1rem;
+  font-weight: 500;
+}
